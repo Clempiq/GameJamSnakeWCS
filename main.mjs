@@ -6,15 +6,13 @@ import { Snake } from "./src/snake.mjs";
 
 // Déclaration des constantes
 
-// function Snake() {
+let Jules = new Snake([
+    [6, 50],
+    [5, 50],
+    [4, 50],
+], 1);
 
 
-//     for(let i = 0; i < Snake.length; i++){
-
-//     }
-// }
-
-Snake();
 
 // Création d'un fonction d'initialisation
 
