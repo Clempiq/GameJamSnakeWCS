@@ -1,10 +1,20 @@
-import { Apple } from './src/apple.mjs'
-import { Snake } from './src/snake.mjs'
-import { Canva } from './src/canva.mjs'
+// import { Apple } from './src/apple.mjs'
+import { Snake } from "./src/snake.mjs";
+// import { Canva } from './src/canva.mjs'
 
 /* Windows.onload */
 
 // Déclaration des constantes
+
+// function Snake() {
+
+
+//     for(let i = 0; i < Snake.length; i++){
+
+//     }
+// }
+
+Snake();
 
 // Création d'un fonction d'initialisation
 
