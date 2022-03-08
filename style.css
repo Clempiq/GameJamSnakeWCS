@@ -1,5 +1,37 @@
-header {
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     background-color: grey;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+header,
+footer {
+    background-color: rgb(187, 185, 185);
     color: blue;
     text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas {
+    height: 70vh;
+    width: 70vw;
+    background-color: black;
+    border: solid 20px white;
+    border-radius: 10px;
 }
