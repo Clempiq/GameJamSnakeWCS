@@ -80,7 +80,7 @@ export function Snake(body, direction) {
         } else if (headY < 0 || headY > 14) {
             wallCollision = true;
         }
-        return console.log(wallCollision);
+        return wallCollision;
     }
 
     // Body

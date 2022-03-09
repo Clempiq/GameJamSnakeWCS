@@ -34,8 +34,11 @@ function refreshCanvas() {
     console.log(Jules)
     console.log(Jules.body[0][0])
     if (Jules.checkCollision()) {
+        clearTimeout(timeout);
+
         launch();
-    };
+    }
+
 }
 
 // gestion des directions
