@@ -70,18 +70,26 @@ export function Snake(body, direction) {
 
     this.checkCollision = function() {
         let wallCollision = false;
+        let snakeCollision = false;
+
         const headX = this.body[0][0];
         const headY = this.body[0][1];
-
+        const rest = this.body.slice(1);
 
         if (headX < 0 || headX > 29) {
             wallCollision = true;
-
         } else if (headY < 0 || headY > 14) {
             wallCollision = true;
         }
         return wallCollision;
+
     }
+    for (let i = 0; i < rest.length; i++) {
+        if (headX == rest[i][0] && headY == rest[i][1]) {
+            snakeCollision = true;
+        }
+    }
+    return snakeCollision;
 
     // Body
 
