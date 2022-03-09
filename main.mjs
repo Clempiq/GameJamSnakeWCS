@@ -1,16 +1,41 @@
 // import { Apple } from './src/apple.mjs'
 import { Snake } from "./src/snake.mjs";
-// import { Canva } from './src/canva.mjs'
+
 
 /* Windows.onload */
 
 // Déclaration des constantes
+let Jules;
+let timeout;
+let delay = 1000;
 
-let Jules = new Snake([
-    [6, 50],
-    [5, 50],
-    [4, 50],
-], 1);
+
+launch();
+
+function launch() {
+    Jules = new Snake([
+        [6, 5],
+        [5, 5],
+        [4, 5],
+    ], "right");
+
+    refreshCanvas()
+
+}
+
+
+
+function refreshCanvas() {
+
+    Jules.advance();
+
+    Jules.draw();
+    timeout = setTimeout(refreshCanvas, delay);
+    console.log(Jules);
+
+}
+
+
 
 
 

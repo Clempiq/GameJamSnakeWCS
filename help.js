@@ -133,9 +133,9 @@ window.onload = function() {
                 default:
                     throw ("Invalid direction");
             }
-            this.body.unshift(nextPosition);
-            if (!this.ateApple)
-                this.body.pop();
+            this.body.unshift(nextPosition); //Rajoute un nvlle coordonnée à la tete
+            if (!this.ateApple) //Si on ne mange pas la pomme
+                this.body.pop(); // on supprime la coordonnée de queue
             else
                 this.ateApple = false;
         };
