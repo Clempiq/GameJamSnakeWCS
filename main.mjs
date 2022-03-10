@@ -15,6 +15,10 @@ launch();
 function launch() {
 
     Jules = new Snake([
+        [10, 5],
+        [9, 5],
+        [8, 5],
+        [7, 5],
         [6, 5],
         [5, 5],
         [4, 5],
@@ -35,7 +39,6 @@ function refreshCanvas() {
     console.log(Jules.body[0][0])
     if (Jules.checkCollision()) {
         clearTimeout(timeout);
-
         launch();
     }
 

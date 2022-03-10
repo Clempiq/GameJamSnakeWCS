@@ -48,24 +48,24 @@ export function Snake(body, direction) {
         ctx.clearRect(0, 0, 900, 600);
     };
 
-    this.setDirection = function(newDirection) {
-        let allowedDirections;
-        switch (this.direction) {
-            case "left":
-            case "right":
-                allowedDirections = ["up", "down"];
-                break;
-            case "up":
-            case "down":
-                allowedDirections = ["left", "right"];
-                break;
-            default:
-                throw ("Invalid direction");
-        }
-        if (allowedDirections.indexOf(newDirection) > -1) {
-            this.direction = newDirection;
-        }
-    };
+    // this.setDirection = function(newDirection) {
+    //     let allowedDirections;
+    //     switch (this.direction) {
+    //         case "left":
+    //         case "right":
+    //             allowedDirections = ["up", "down"];
+    //             break;
+    //         case "up":
+    //         case "down":
+    //             allowedDirections = ["left", "right"];
+    //             break;
+    //         default:
+    //             throw ("Invalid direction");
+    //     }
+    //     if (allowedDirections.indexOf(newDirection) > -1) {
+    //         this.direction = newDirection;
+    //     }
+    // };
 
 
     this.checkCollision = function() {
@@ -81,15 +81,18 @@ export function Snake(body, direction) {
         } else if (headY < 0 || headY > 14) {
             wallCollision = true;
         }
-        return wallCollision;
 
-    }
-    for (let i = 0; i < rest.length; i++) {
-        if (headX == rest[i][0] && headY == rest[i][1]) {
-            snakeCollision = true;
+        for (let i = 0; i < rest.length; i++) {
+            if (headX == rest[i][0] && headY == rest[i][1]) {
+                snakeCollision = true;
+            }
         }
+
+        return wallCollision || snakeCollision;
     }
-    return snakeCollision;
+
+
+
 
     // Body
 
