@@ -8,10 +8,14 @@ export function Apple(position) {
 
     // fonction de dessiner une pomme
     this.draw = function() {
-        ctx.fillStyle = "red";
-        ctx.arc((this.position[0] * 10) + 5, (this.position[1] * 10) + 5, 5, 0, 2 * Math.PI);
-        ctx.fill();
-    }
+            ctx.save();
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.arc((this.position[0] * 10) + 5, (this.position[1] * 10) + 5, 5, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.restore();
+        }
+        //this.clear = ctx.clearRect(0, 0, 900, 600);
 
     // Fonction qui determine une nouvelle position
 

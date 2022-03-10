@@ -8,7 +8,7 @@ import { Snake } from "./src/snake.mjs";
 let Jules;
 let apple;
 let timeout;
-let delay = 500;
+let delay = 200;
 
 
 launch();
@@ -40,17 +40,21 @@ function refreshCanvas() {
     Jules.draw();
     apple.draw();
     timeout = setTimeout(refreshCanvas, delay);
-
+    let x = Math.round(Math.random() * 29);
+    let y = Math.round(Math.random() * 14);
     //LOSE
     if (Jules.checkCollision()) {
         clearTimeout(timeout);
         launch();
     } else {
         if (Jules.appleCollision(apple)) {
-            console.log("WINNNN");
+            apple.position = [x, y];
+            console.log(apple.position);
+
         }
     }
 }
+
 
 
 
