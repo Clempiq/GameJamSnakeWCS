@@ -44,15 +44,24 @@ window.onload = function() {
 
     function refreshCanvas() {
         snakee.advance();
+
+        //lose
         if (snakee.checkCollision()) {
             gameOver();
+
+            // Win
         } else {
-            if (snakee.isEatingApple(applee)) {
+            if (snakee.isEatingApple(applee)) { //Si le serpent mange la pomme
+                // 1- Incremente le score
                 score++;
+                // 2 - Passe la variable à TRUE
                 snakee.ateApple = true;
+                // 3 - Créer une nouvelle position de pomme TANT QUE isOnSnake est TRUE
                 do {
                     applee.setNewPosition();
                 } while (applee.isOnSnake(snakee))
+
+                // 4- Incrémentation de la vitesse du serpent
                 if (score % 5 == 0) {
                     speedUp();
                 }
@@ -194,9 +203,11 @@ window.onload = function() {
     function Apple(position) {
         this.position = position;
         this.draw = function() {
+
             const radius = blockSize / 2;
             const x = this.position[0] * blockSize + radius;
             const y = this.position[1] * blockSize + radius;
+
             ctx.save();
             ctx.fillStyle = "#33cc33";
             ctx.beginPath();
@@ -204,11 +215,13 @@ window.onload = function() {
             ctx.fill();
             ctx.restore();
         };
+
         this.setNewPosition = function() {
             const newX = Math.round(Math.random() * (widthInBlocks - 1));
             const newY = Math.round(Math.random() * (heightInBlocks - 1));
             this.position = [newX, newY];
         };
+
         this.isOnSnake = function(snakeToCheck) {
             let isOnSnake = false;
             for (let i = 0; i < snakeToCheck.body.length; i++) {

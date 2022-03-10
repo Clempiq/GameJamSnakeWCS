@@ -1,4 +1,4 @@
-// import { Apple } from './src/apple.mjs'
+import { Apple } from './src/apple.mjs';
 import { Snake } from "./src/snake.mjs";
 
 
@@ -6,6 +6,7 @@ import { Snake } from "./src/snake.mjs";
 
 // Déclaration des constantes
 let Jules;
+let apple;
 let timeout;
 let delay = 500;
 
@@ -24,6 +25,9 @@ function launch() {
         [4, 5],
         [3, 5],
     ], "right");
+
+    apple = new Apple([15, 10]);
+
     clearTimeout(timeout);
     refreshCanvas()
 }
@@ -34,15 +38,21 @@ function refreshCanvas() {
 
     Jules.advance();
     Jules.draw();
+    apple.draw();
     timeout = setTimeout(refreshCanvas, delay);
-    console.log(Jules)
-    console.log(Jules.body[0][0])
+
+    //LOSE
     if (Jules.checkCollision()) {
         clearTimeout(timeout);
         launch();
+    } else {
+        if (Jules.appleCollision(apple)) {
+            console.log("WINNNN");
+        }
     }
-
 }
+
+
 
 // gestion des directions
 document.onkeydown = function(e) {

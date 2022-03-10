@@ -1,8 +1,9 @@
+import { Apple } from './apple.mjs';
+
+
 const blockSize = 10;
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
-
-
 
 export function Snake(body, direction) {
 
@@ -12,12 +13,12 @@ export function Snake(body, direction) {
 
 
     this.draw = function() {
-        ctx.save();
+        // ctx.save();
         for (let i = 0; i < this.body.length; i++) {
             ctx.fillStyle = "green";
             ctx.fillRect(this.body[i][0] * blockSize, this.body[i][1] * blockSize, blockSize, blockSize);
         }
-        ctx.restore();
+        // ctx.restore();
     }
 
 
@@ -48,25 +49,6 @@ export function Snake(body, direction) {
         ctx.clearRect(0, 0, 900, 600);
     };
 
-    // this.setDirection = function(newDirection) {
-    //     let allowedDirections;
-    //     switch (this.direction) {
-    //         case "left":
-    //         case "right":
-    //             allowedDirections = ["up", "down"];
-    //             break;
-    //         case "up":
-    //         case "down":
-    //             allowedDirections = ["left", "right"];
-    //             break;
-    //         default:
-    //             throw ("Invalid direction");
-    //     }
-    //     if (allowedDirections.indexOf(newDirection) > -1) {
-    //         this.direction = newDirection;
-    //     }
-    // };
-
 
     this.checkCollision = function() {
         let wallCollision = false;
@@ -89,7 +71,24 @@ export function Snake(body, direction) {
         }
 
         return wallCollision || snakeCollision;
-    }
+
+
+    };
+
+    this.appleCollision = function(Apple) {
+        let ateApple = false
+        let appleX = Apple.position[0];
+        let appleY = Apple.position[1];
+        const headX = this.body[0][0];
+        const headY = this.body[0][1];
+        const rest = this.body.slice(1);
+
+        if (headX === (appleX) && headY === (appleY)) {
+            ateApple = true;
+        }
+
+        return ateApple;
+    };
 
 
 
