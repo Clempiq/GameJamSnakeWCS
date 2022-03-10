@@ -19,11 +19,7 @@ function launch() {
         [10, 5],
         [9, 5],
         [8, 5],
-        [7, 5],
-        [6, 5],
-        [5, 5],
-        [4, 5],
-        [3, 5],
+
     ], "right");
 
     apple = new Apple([15, 10]);
@@ -40,17 +36,17 @@ function refreshCanvas() {
     Jules.draw();
     apple.draw();
     timeout = setTimeout(refreshCanvas, delay);
-    let x = Math.round(Math.random() * 29);
-    let y = Math.round(Math.random() * 14);
+    let x = Math.round(Math.random() * 5); //29
+    let y = Math.round(Math.random() * 5); //14
     //LOSE
     if (Jules.checkCollision()) {
         clearTimeout(timeout);
         launch();
     } else {
         if (Jules.appleCollision(apple)) {
+            Jules.eatApple = true;
             apple.position = [x, y];
-            console.log(apple.position);
-
+            console.log(apple.onSnake(Jules))
         }
     }
 }

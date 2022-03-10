@@ -45,8 +45,14 @@ export function Snake(body, direction) {
         }
 
         this.body.unshift(nextPosition);
-        this.body.pop();
-        ctx.clearRect(0, 0, 900, 600);
+
+        if (!this.eatApple) { // Si on ne mange pas la pomme
+            this.body.pop(); // Retire le dernier
+            ctx.clearRect(0, 0, 900, 600);
+
+        } else {
+            this.eatApple = false;
+        }
     };
 
 
@@ -76,7 +82,8 @@ export function Snake(body, direction) {
     };
 
     this.appleCollision = function(Apple) {
-        let ateApple = false
+
+        let eatApple2 = false;
         let appleX = Apple.position[0];
         let appleY = Apple.position[1];
         const headX = this.body[0][0];
@@ -84,10 +91,18 @@ export function Snake(body, direction) {
         const rest = this.body.slice(1);
 
         if (headX === (appleX) && headY === (appleY)) {
-            ateApple = true;
+            eatApple2 = true;
         }
 
-        return ateApple;
+        // eviter de creer une pomme sur le snake
+        // for (let i = 0; i < rest.length; i++) {
+        //     if (rest[i][0] === appleX || rest[i][1] === appleY) {
+        //         ateApple = false;
+        //     }
+        // }
+
+
+        return eatApple2;
     };
 
 
