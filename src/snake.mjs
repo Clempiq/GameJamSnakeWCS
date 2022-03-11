@@ -64,9 +64,9 @@ export function Snake(body, direction) {
         const headY = this.body[0][1];
         const rest = this.body.slice(1);
 
-        if (headX < 0 || headX > 29) {
+        if (headX < 1 || headX > 28) {
             wallCollision = true;
-        } else if (headY < 0 || headY > 14) {
+        } else if (headY < 1 || headY > 13) {
             wallCollision = true;
         }
 

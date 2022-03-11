@@ -19,15 +19,13 @@ export function Apple(position) {
         ctx.restore();
     }
 
-    // Fonction qui internit l'apparition de pomme sur le serpent
+    // Fonction qui interdit l'apparition de pomme sur le serpent
     this.onSnake = function(snakeToCheck) {
         let onSnake = false;
 
         for (let i = 0; i < snakeToCheck.body.length; i++) {
             if (this.position[0] === snakeToCheck.body[i][0] && this.position[1] === snakeToCheck.body[i][1]) {
-                onSnake = true;
-            } else {
-                onSnake = false;
+                return true;
             }
         }
         return onSnake;

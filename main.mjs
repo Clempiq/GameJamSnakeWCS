@@ -9,11 +9,20 @@ let Jules;
 let apple;
 let timeout;
 let delay = 200;
+let newScore = 0;
+let btn = document.getElementById('btn');
+let score = document.getElementById('score');
 
 
-launch();
+btn.addEventListener('click', function() {
+
+    launch();
+})
+
 
 function launch() {
+    newScore = 0;
+    score.textContent = "Ton score: " + newScore;
 
     Jules = new Snake([
         [10, 5],
@@ -33,24 +42,36 @@ function launch() {
 function refreshCanvas() {
 
     Jules.advance();
+
+
+    //LOSE
     Jules.draw();
     apple.draw();
     timeout = setTimeout(refreshCanvas, delay);
-    let x = Math.round(Math.random() * 5); //29
-    let y = Math.round(Math.random() * 5); //14
-    //LOSE
+
     if (Jules.checkCollision()) {
         clearTimeout(timeout);
-        launch();
+
+
+        // WIN
     } else {
         if (Jules.appleCollision(apple)) {
+            // Renvoie TRUE pour apparition d'une pomme
             Jules.eatApple = true;
-            apple.position = [x, y];
-            console.log(apple.onSnake(Jules))
+            //Ajoute un point
+            newScore++;
+            score.textContent = "Ton score: " + newScore;
+            // Renvoie une nouvelle position
+            do {
+                let x = Math.round(Math.random() * 29);
+                let y = Math.round(Math.random() * 14);
+                apple.position = [x, y];
+                console.log('Hello');
+            } while (apple.onSnake(Jules));
+            apple.draw();
         }
     }
 }
-
 
 
 
