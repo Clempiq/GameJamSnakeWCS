@@ -1,6 +1,7 @@
 html {
     height: 100%;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -20,7 +21,6 @@ footer {
     background-color: #F77B7B;
     color: white;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     -webkit-box-shadow: -3px 11px 15px 5px #9D9D9D;
     box-shadow: -3px 11px 15px 5px #9D9D9D;
 }
@@ -49,13 +49,22 @@ button {
     background-color: #F77B7B;
     color: white;
     font-weight: 900;
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin-bottom: 20px;
 }
 
 #score {
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     text-align: center;
+}
+
+.launch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.explain {
+    margin-top: 20px;
 }

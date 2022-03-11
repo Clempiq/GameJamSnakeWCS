@@ -2,8 +2,6 @@ import { Apple } from './src/apple.mjs';
 import { Snake } from "./src/snake.mjs";
 
 
-/* Windows.onload */
-
 // Déclaration des constantes
 let Jules;
 let apple;
@@ -21,6 +19,7 @@ btn.addEventListener('click', function() {
 
 
 function launch() {
+    score.style.color = "black";
     newScore = 0;
     score.textContent = "Ton score: " + newScore;
 
@@ -51,17 +50,13 @@ function refreshCanvas() {
 
     if (Jules.checkCollision()) {
         clearTimeout(timeout);
-
-
-        // WIN
+        score.style.color = "red";
+        score.textContent = "Tu as perdu (looser), ton score est de : " + newScore;
     } else {
         if (Jules.appleCollision(apple)) {
-            // Renvoie TRUE pour apparition d'une pomme
             Jules.eatApple = true;
-            //Ajoute un point
             newScore++;
             score.textContent = "Ton score: " + newScore;
-            // Renvoie une nouvelle position
             do {
                 let x = Math.round(Math.random() * 29);
                 let y = Math.round(Math.random() * 14);
@@ -81,18 +76,22 @@ document.onkeydown = function(e) {
     let newDirection;
     switch (key) {
         case 37:
+        case 81:
             newDirection = "left";
             break;
         case 39:
+        case 68:
             newDirection = "right";
             break;
         case 38:
+        case 90:
             newDirection = "up";
             break;
         case 40:
+        case 83:
             newDirection = "down";
             break;
-        case 32:
+        case 13:
             launch();
         default:
             return;
@@ -100,21 +99,3 @@ document.onkeydown = function(e) {
     Jules.direction = newDirection;
     window.addEventListener('keyup', onkeydown);
 }
-
-// Création d'un fonction de lancement
-
-// Création d'une fonction de rafraichissement du canva (fonction principale)
-
-// Création d'une fonction game over
-
-
-// if (Jules.checkCollision) {
-//     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-// }
-
-
-// Création d'une fonction d'affichage des scores
-
-// Création d'une fonction d'augmentation de la vitesse
-
-// Gérer les touches du clavier

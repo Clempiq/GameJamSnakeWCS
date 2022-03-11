@@ -13,12 +13,10 @@ export function Snake(body, direction) {
 
 
     this.draw = function() {
-        // ctx.save();
         for (let i = 0; i < this.body.length; i++) {
             ctx.fillStyle = "green";
             ctx.fillRect(this.body[i][0] * blockSize, this.body[i][1] * blockSize, blockSize, blockSize);
         }
-        // ctx.restore();
     }
 
 
@@ -94,29 +92,7 @@ export function Snake(body, direction) {
             eatApple2 = true;
         }
 
-        // eviter de creer une pomme sur le snake
-        // for (let i = 0; i < rest.length; i++) {
-        //     if (rest[i][0] === appleX || rest[i][1] === appleY) {
-        //         ateApple = false;
-        //     }
-        // }
-
-
         return eatApple2;
     };
-
-
-
-
-    // Body
-
-    // Direction
-    // Mange une pomme
-    // Fonction Draw
-    // Fonction avance
-    // Fonction suppression de la derniere position
-    // Fonction de direction
-    // Fonction de collision
-    // Fonction de manger une pomme
 
 }
